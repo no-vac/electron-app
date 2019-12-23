@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 
 function createWindow() {
   let win = new BrowserWindow({
@@ -23,6 +23,20 @@ function createWindow() {
     win = null;
   });
 }
+const template = [
+  {
+    label: "Menu",
+    submenu: [
+      { label: "reload", role: "reload" },
+      { label: "option1" },
+      { type: "separator" },
+      { label: "option2" }
+    ]
+  }
+];
+
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
